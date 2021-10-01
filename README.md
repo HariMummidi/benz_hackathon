@@ -141,15 +141,30 @@ Run the docker container from the image, which will run the container in backgro
 
 `docker container run -d -p 8080:5000 benz_api`
 
-`[ravan@workstation benz_hackathon]$ docker container run -d -p 8080:5000 benz_api
+`
+[ravan@workstation benz_hackathon]$ docker container run -d -p 8080:5000 benz_api
 e4d33f6501f8df924665c1e12830c7ec0dfcd2c6467899aa40b8b1e8c82a7ae6
-[ravan@workstation benz_hackathon]$`
+[ravan@workstation benz_hackathon]$
+`
 
 **Steps to run from Pulled image:**
 
-`[ravan@workstation benz_hackathon]$ docker container run -d -p 8080:5000 ravaan007/hackathons:benz_microservice_api
+`
+[ravan@workstation benz_hackathon]$ docker container run -d -p 8080:5000 ravaan007/hackathons:benz_microservice_api
 339b150978fc72496f7460e3064dfb6a6847c373ef3308e9e6991309a183dde9
-[ravan@workstation benz_hackathon]$`
+[ravan@workstation benz_hackathon]$
+`
+
+## Validation
+
+Once docker container is up and running, ran below 5 Test cases to validate
+
+**Test Case:1**
+Input : `{ "vin": "W1K2062161F0033", "source": "Home", "destination": "Lake" }`
+
+Output:
+
+
 
 
 
