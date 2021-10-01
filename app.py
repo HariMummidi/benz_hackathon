@@ -54,7 +54,7 @@ def get_charging_stations(source,destination):
         return json.dumps({"errors": [ { "id": 9999, "description": "Technical Exception" } ]})
 @app.route("/")
 def index():
-    return "Hello World!"
+    return jsonify({"status": "Container is up and running"})
 
 @app.route("/merc/estimate_travel", methods=["POST"])
 def create_artist():
