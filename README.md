@@ -4,10 +4,11 @@ This project is for the Mercedes-Benz Research and Development Hackathon.
 Hackathon Link: [https://www.techgig.com/hackathon/mercedes-benz-hiring-challenge](url) 
 
 In this project I have,designed and implemented a microservice for an autonomous electric vehicle system with the following features:
- --> Check if the vehicle can reach the destination without charging
- --> Find charging stations - If the destination can not be reached with current charging level. Appropriate handling to be done if the destination cannot be            reached even with charging
+    Check if the vehicle can reach the destination without charging.
+    Find charging stations - If the destination can not be reached with current charging level. Appropriate handling to be done if the destination cannot be reached even with       charging
 
 The features are described in detail below:
+
 Check if vehicle can reach destination without charging
 
 Created a microservice which exposes one REST endpoint(http://127.0.0.1:8080/merc/estimate_travel and can receive the request in the given request format.
@@ -20,7 +21,7 @@ and the response format will be-
 
 This will the give the result whether the vehical can reach the destination with the current charge level without charging at any charging stations in between the source and the destination.
 
-## Installation and setup
+## Installation and Setup
 You can either build the docker image or pull the image from docker hub.
 Below steps discuss on both the steps.
 
@@ -28,31 +29,40 @@ Below steps discuss on both the steps.
 
 Clone the repo to your local directory.
 
-`git clone https://github.com/HariMummidi/benz_hackathon.git/`
+```
+git clone https://github.com/HariMummidi/benz_hackathon.git/
+```
 
-`[ravan@workstation ~]$ git clone https://github.com/HariMummidi/benz_hackathon.git/
+```
+[ravan@workstation ~]$ git clone https://github.com/HariMummidi/benz_hackathon.git/
 Cloning into 'benz_hackathon'...
 remote: Enumerating objects: 12, done.
 remote: Counting objects: 100% (12/12), done.
 remote: Compressing objects: 100% (7/7), done.
 remote: Total 12 (delta 2), reused 12 (delta 2), pack-reused 0
 Unpacking objects: 100% (12/12), 2.58 KiB | 97.00 KiB/s, done.
-`
+```
 
-`cd benz_hackathon/`
+```
+cd benz_hackathon/
+```
 
-`[ravan@workstation ~]$ cd benz_hackathon/
+```
+[ravan@workstation ~]$ cd benz_hackathon/
 [ravan@workstation benz_hackathon]$ ls -lrth
 total 20K
 -rw-rw-r--. 1 ravan ravan  193 Oct  1 19:10 Dockerfile
 -rw-rw-r--. 1 ravan ravan  391 Oct  1 19:10 README.md
 -rw-rw-r--. 1 ravan ravan   31 Oct  1 19:10 requirements.txt
 -rw-rw-r--. 1 ravan ravan 6.0K Oct  1 19:10 app.py
-[ravan@workstation benz_hackathon]$`
+[ravan@workstation benz_hackathon]$
+```
 
 Once, repo is cloned to local directory run below commands to build the docker image
 
-`docker build . --tag benz_api`
+```
+docker build . --tag benz_api
+```
 
 ```
 [ravan@workstation benz_hackathon]$ docker build . --tag benz_api
@@ -110,10 +120,12 @@ Successfully tagged benz_api:latest
 
 Pull the image from Docker Hub repo ravaan007/hackathons
 
-`docker pull ravaan007/hackathons:benz_microservice_api`
+```
+docker pull ravaan007/hackathons:benz_microservice_api
+```
 
 
-`
+```
 [ravan@workstation benz_hackathon]$ docker pull ravaan007/hackathons:benz_microservice_api
 benz_microservice_api: Pulling from ravaan007/hackathons
 07aded7c29c6: Already exists 
@@ -130,7 +142,7 @@ Status: Downloaded newer image for ravaan007/hackathons:benz_microservice_api
 docker.io/ravaan007/hackathons:benz_microservice_api
 [ravan@workstation benz_hackathon]$ 
 
-`
+```
 
 ## Running Docker Container
 
@@ -139,35 +151,68 @@ Run the docker container from the image, which will run the container in backgro
 
 **Steps for running from build image:**
 
-`docker container run -d -p 8080:5000 benz_api`
+```
+docker container run -d -p 8080:5000 benz_api
+```
 
-`
+```
 [ravan@workstation benz_hackathon]$ docker container run -d -p 8080:5000 benz_api
 e4d33f6501f8df924665c1e12830c7ec0dfcd2c6467899aa40b8b1e8c82a7ae6
 [ravan@workstation benz_hackathon]$
-`
+```
 
 **Steps to run from Pulled image:**
 
-`
+```
 [ravan@workstation benz_hackathon]$ docker container run -d -p 8080:5000 ravaan007/hackathons:benz_microservice_api
 339b150978fc72496f7460e3064dfb6a6847c373ef3308e9e6991309a183dde9
 [ravan@workstation benz_hackathon]$
-`
+```
 
 ## Validation
 
 Once docker container is up and running, ran below 5 Test cases to validate
 
-**Test Case:1**
-Input : `{ "vin": "W1K2062161F0033", "source": "Home", "destination": "Lake" }`
+**Test Case: 1**
+Input : ```{ "vin": "W1K2062161F0033", "source": "Home", "destination": "Lake" }```
+
 
 Output:
 
+![image](https://user-images.githubusercontent.com/85939709/135659732-1af6798b-3429-4d52-af97-379024c49164.png)
+
+**Test Case: 2**
+Input : ```{ "vin": "W1K2062161F0080", "source": "Home", "destination": "Airport" }```
 
 
+Output:
+
+![image](https://user-images.githubusercontent.com/85939709/135660334-d0d36b7c-4d71-4742-9bd8-389f47e4a610.png)
 
 
+**Test Case: 3**
+Input: ```{ "vin": "W1K2062161F0080", "source": "@$%%%", "destination": "Airport" }```
 
+
+Output:
+
+![image](https://user-images.githubusercontent.com/85939709/135660573-44380e9e-f3d2-4666-a1bb-d7cf953bfd1c.png)
+
+**Test Case: 4**
+
+Input: ```{ "vin": "W1K2062161F0046", "source": "Home", "destination": "Movie Theatre" }```
+
+
+Output:
+
+![image](https://user-images.githubusercontent.com/85939709/135660863-cf651033-db36-4077-9d7a-56d35ad026c3.png)
+
+**Test Case: 5**
+Input: ```{  "vin": "W1K2062161F0014", "source": "Home", "destination": "Zoo"  }```
+
+
+Output:
+
+![image](https://user-images.githubusercontent.com/85939709/135661459-abd77bac-cf41-4d4c-9e2f-15efcbb9de4c.png)
 
 
