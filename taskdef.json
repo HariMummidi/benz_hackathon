@@ -1,0 +1,35 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "benz_api",
+      "image": "563184572802.dkr.ecr.ap-southeast-1.amazonaws.com/benzapi",
+      "portMappings": [
+        {
+          "containerPort": 5000
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "dockerLabels": {
+        "name": "benz_api"
+      },
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/apitesttask",
+          "awslogs-region": "ap-southeast-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ],
+  "taskRoleArn": "arn:aws:iam::563184572802:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::563184572802:role/ecsTaskExecutionRole",
+  "family": "Fraud-Detection-Model",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "256",
+  "memory": "1024"
+}
