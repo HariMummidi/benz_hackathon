@@ -1,0 +1,9 @@
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:ap-southeast-1:563184572802:task-definition/apitesttask:1"
+        LoadBalancerInfo:
+          ContainerName: "benz_api"
+          ContainerPort: 5000
