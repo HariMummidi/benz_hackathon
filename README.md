@@ -1,4 +1,4 @@
-# Python REST API Docker Image for Benz R&D Hackathon
+# Python Microservice for Autonomus Driving Car to Estimate Travel Based on Current Charging and Distance
 
 This project is for the Mercedes-Benz Research and Development Hackathon.
 Hackathon Link: [https://www.techgig.com/hackathon/mercedes-benz-hiring-challenge](url) 
